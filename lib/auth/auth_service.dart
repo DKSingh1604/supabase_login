@@ -6,10 +6,17 @@ class AuthService {
   //sign in with email and password
   Future<AuthResponse> signInWithEmailPassword(
       String email, String password) async {
-    return await _supabase.auth.signInWithPassword(
+    final response = await _supabase.auth.signInWithPassword(
       email: email,
       password: password,
     );
+
+    //check if password is correct or not
+    if (response.session == null || response.user == null) {
+      throw Exception('Invalid email or password');
+    }
+
+    return response;
   }
 
   //sign up with email and passowrd

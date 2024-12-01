@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:supabase_login/auth/auth_gate.dart';
+import 'package:supabase_login/pages/login_page.dart';
 
 void main() async {
   //supabase setup
@@ -20,7 +22,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(),
+      home: AuthGate(),
     );
   }
 }
